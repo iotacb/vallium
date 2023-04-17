@@ -1,0 +1,10 @@
+{
+	"name": "vallium",
+	"private": true,
+	"workspaces": {
+		"packages": [
+			"packages/*",
+			"sites/*"
+		]
+	}
+}
