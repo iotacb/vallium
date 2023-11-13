@@ -8,6 +8,7 @@ type Props = ValliumButtonProps &
 export type ValliumButtonProps = {
 	as?: "button" | "a";
 	variant?: "white" | "accent" | "dark";
+	scale?: "normal" | "small" | "thin" | "big";
 };
 
 function ButtonAsButton({
@@ -36,6 +37,7 @@ const types = {
 export function Button({
 	as = "button",
 	variant = "white",
+	scale = "normal",
 	className,
 	...props
 }: Props) {
@@ -50,10 +52,17 @@ export function Button({
 			"bg-neutral-900 hover:bg-neutral-800 disabled:bg-neutral-600 border border-neutral-700 text-white disabled:text-neutral-400"
 		),
 	};
+	const scales = {
+		normal: "px-6 py-3",
+		small: "px-4 py-2",
+		thin: "px-2 py-1",
+		big: "px-8 py-4",
+	};
 	return types[as]({
 		...props,
 		className: cn(
-			"bg-white px-6 py-3 rounded-md duration-150 flex items-center gap-2",
+			"bg-white rounded-md duration-150 flex items-center gap-2",
+			scales[scale],
 			variants[variant],
 			className
 		),
