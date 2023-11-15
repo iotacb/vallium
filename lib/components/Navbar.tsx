@@ -82,28 +82,22 @@ export function Navbar({ contentLeft, contentRight, fixed, className }: Props) {
 
 export function ValliumNavbarIconOpen() {
 	return (
-		<svg
-			width="24"
-			height="24"
-			viewBox="0 0 24 24"
-			fill="none"
-			xmlns="http://www.w3.org/2000/svg"
-		>
+		<svg width="24" height="24" viewBox="0 0 24 24">
 			<path
-				fill-rule="evenodd"
-				clip-rule="evenodd"
+				fillRule="evenodd"
+				clipRule="evenodd"
 				d="M2 5C2 4.44772 2.44772 4 3 4H19C19.5523 4 20 4.44772 20 5C20 5.55228 19.5523 6 19 6H3C2.44772 6 2 5.55228 2 5Z"
 				fill="currentColor"
 			></path>
 			<path
-				fill-rule="evenodd"
-				clip-rule="evenodd"
+				fillRule="evenodd"
+				clipRule="evenodd"
 				d="M2 19C2 18.4477 2.44772 18 3 18H17C17.5523 18 18 18.4477 18 19C18 19.5523 17.5523 20 17 20H3C2.44772 20 2 19.5523 2 19Z"
 				fill="currentColor"
 			></path>
 			<path
-				fill-rule="evenodd"
-				clip-rule="evenodd"
+				fillRule="evenodd"
+				clipRule="evenodd"
 				d="M2 12C2 11.4477 2.44772 11 3 11H21C21.5523 11 22 11.4477 22 12C22 12.5523 21.5523 13 21 13H3C2.44772 13 2 12.5523 2 12Z"
 				fill="currentColor"
 			></path>
@@ -113,19 +107,13 @@ export function ValliumNavbarIconOpen() {
 
 export function ValliumNavbarIconClose() {
 	return (
-		<svg
-			width="24"
-			height="24"
-			viewBox="0 0 24 24"
-			fill="none"
-			xmlns="http://www.w3.org/2000/svg"
-		>
+		<svg width="24" height="24" viewBox="0 0 24 24">
 			<path
 				d="M4 4L12 12M20 20L12 12M12 12L20 4M12 12L4 20"
 				stroke="currentColor"
-				stroke-width="2"
-				stroke-linecap="round"
-				stroke-linejoin="round"
+				strokeWidth="2"
+				strokeLinecap="round"
+				strokeLinejoin="round"
 			></path>
 		</svg>
 	);

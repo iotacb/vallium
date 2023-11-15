@@ -2,16 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { Navbar, ValliumNavbarItemProps } from "../lib/components/Navbar.tsx";
-import { Button, Text } from "../lib/main.ts";
-import {
-	Input,
-	InputAddonLeft,
-	InputAddonRight,
-	InputGroup,
-	InputItemLeft,
-	InputItemRight,
-} from "../lib/components/Input.tsx";
-import Inputs from "./pages/Inputs.tsx";
+import { Button } from "../lib/main.ts";
+import Dividers from "./pages/Dividers.tsx";
 
 const leftNavbarContent: ValliumNavbarItemProps[] = [
 	{
@@ -41,7 +33,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
 			contentLeft={leftNavbarContent}
 			contentRight={rightNavbarContent}
 		/>
-		<Inputs />
+		<Dividers />
 		{/* <div className="w-screen h-screen grid place-content-center">
 			<svg width="0" height="0">
 				<defs>

@@ -15,7 +15,7 @@ const validInputGroupChilds = {
 };
 
 export type ValliumInputProps = {
-	type?: "outlined" | "filled";
+	variant?: "outlined" | "filled";
 };
 
 export type ValliumInputGroupProps = {} & React.ComponentPropsWithoutRef<"div">;
@@ -45,25 +45,75 @@ export function InputGroup({
 		children,
 		validInputGroupChilds.itemRight
 	);
-	const clones = Children.toArray(children).map((child: any) => {
+	const variantOfInput = Children.toArray(children)
+		.filter((child: any) => child.props["variant"])
+		.map((child: any) => child.props["variant"])[0];
+	// const clones = Children.toArray(children).map((child: any) => {
+	// 	if (
+	// 		child.type.id === validInputGroupChilds.item ||
+	// 		child.type.id === validInputGroupChilds.itemLeft ||
+	// 		child.type.id === validInputGroupChilds.itemRight ||
+	// 		child.type.id === validInputGroupChilds.addon ||
+	// 		child.type.id === validInputGroupChilds.addonLeft ||
+	// 		child.type.id === validInputGroupChilds.addonRight
+	// 	) {
+	// 		return cloneElement(child, { ...child.props });
+	// 	} else if (child.type.id === validInputGroupChilds.input) {
+	// 		return cloneElement(child, {
+	// 			...child.props,
+	// 			className: `
+	// 			${containsAddonLeft ? "rounded-l-none" : ""}
+	// 			${
+	// 				containsAddonLeft && child.props.variant === "outlined"
+	// 					? "leh border-l-0 meh"
+	// 					: ""
+	// 			}
+	// 			${containsAddonRight ? "rounded-r-none" : ""}
+	// 			${containsItemLeft ? "pl-10" : ""}
+	// 			${containsItemRight ? "pr-10" : ""}
+	// 			`,
+	// 		});
+	// 	} else {
+	// 		console.error(
+	// 			"'Vallium InputGroup' contains a child that is not part of 'Vallium Input'. It may not behave like you expect!"
+	// 		);
+	// 		return cloneElement(child, { ...child.props });
+	// 	}
+	// });
+	const clones = Children.map(children, (child: any) => {
+		if (child == null || child.type == null) return;
 		if (
 			child.type.id === validInputGroupChilds.item ||
 			child.type.id === validInputGroupChilds.itemLeft ||
 			child.type.id === validInputGroupChilds.itemRight ||
-			child.type.id === validInputGroupChilds.addon ||
-			child.type.id === validInputGroupChilds.addonLeft ||
-			child.type.id === validInputGroupChilds.addonRight
+			child.type.id === validInputGroupChilds.addon
 		) {
 			return cloneElement(child, { ...child.props });
+		} else if (child.type.id === validInputGroupChilds.addonLeft) {
+			return cloneElement(child, {
+				...child.props,
+				className: `
+				${child.props.className ? child.props.className : ""}
+				${variantOfInput !== "filled" ? "border-r-0" : ""}
+				`,
+			});
+		} else if (child.type.id === validInputGroupChilds.addonRight) {
+			return cloneElement(child, {
+				...child.props,
+				className: `
+				${child.props.className ? child.props.className : ""}
+				${variantOfInput !== "filled" ? "border-l-0" : ""}
+				`,
+			});
 		} else if (child.type.id === validInputGroupChilds.input) {
 			return cloneElement(child, {
 				...child.props,
 				className: `
-				${child.props.clasName}
-				${containsAddonLeft && "rounded-l-none"}
-				${containsAddonRight && "rounded-r-none"}
-				${containsItemLeft && "pl-10"}
-				${containsItemRight && "pr-10"}
+				${child.props.className ? child.props.className : ""}
+				${containsAddonLeft ? "rounded-l-none" : ""}
+				${containsAddonRight ? "rounded-r-none" : ""}
+				${containsItemLeft ? "pl-10" : ""}
+				${containsItemRight ? "pr-10" : ""}
 				`,
 			});
 		} else {
@@ -112,7 +162,7 @@ export const InputAddonLeft = ({
 	...props
 }: ValliumInputAddonProps) => {
 	return (
-		<InputAddon className={cn("rounded-l-md border-r-0", className)} {...props}>
+		<InputAddon className={cn("rounded-l-md", className)} {...props}>
 			{children}
 		</InputAddon>
 	);
@@ -125,7 +175,7 @@ export const InputAddonRight = ({
 	...props
 }: ValliumInputAddonProps) => {
 	return (
-		<InputAddon className={cn("rounded-r-md border-l-0", className)} {...props}>
+		<InputAddon className={cn("rounded-r-md", className)} {...props}>
 			{children}
 		</InputAddon>
 	);
@@ -177,19 +227,16 @@ export const InputItemRight = ({
 };
 InputItemRight.id = validInputGroupChilds.itemRight;
 
-export const Input = ({ type = "outlined", className, ...props }: Props) => {
-	const types = {
+export const Input = ({ variant = "outlined", className, ...props }: Props) => {
+	const variants = {
 		outlined: cn("bg-transparent border-neutral-700"),
-		filled: cn(
-			"bg-neutral-900 border-transparent group-[.valliumInputGroup]:focus:bg-neutral-700 focus:bg-neutral-800"
-		),
+		filled: cn("bg-neutral-800 border-transparent"),
 	};
-
 	return (
 		<input
 			className={cn(
 				"w-full rounded-md px-2 transition-colors duration-150 text-white h-10 outline-none border focus:border-vallium-500",
-				types[type],
+				variants[variant],
 				className
 			)}
 			{...props}

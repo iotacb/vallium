@@ -27,6 +27,7 @@ export default function Inputs({}: Props) {
 			<Card flex direction="col" gap="4">
 				<div className="flex items-center gap-4">
 					<Input placeholder="Default Input" />
+					<Input variant="filled" placeholder="Default Input" />
 				</div>
 				<div className="flex items-center gap-4">
 					<InputGroup>
@@ -40,11 +41,27 @@ export default function Inputs({}: Props) {
 							</InputAddonRight>
 						)}
 					</InputGroup>
+					<InputGroup>
+						<InputAddonLeft>
+							<Text>$</Text>
+						</InputAddonLeft>
+						<Input variant="filled" placeholder="Input with addons" />
+						{showAddonRight && (
+							<InputAddonRight>
+								<Text>@</Text>
+							</InputAddonRight>
+						)}
+					</InputGroup>
 				</div>
 				<div className="flex items-center gap-4">
 					<InputGroup>
 						<InputItemLeft>$</InputItemLeft>
 						<Input placeholder="Input with Items" />
+						{showItemRight && <InputItemRight>@</InputItemRight>}
+					</InputGroup>
+					<InputGroup>
+						<InputItemLeft>$</InputItemLeft>
+						<Input variant="filled" placeholder="Input with Items" />
 						{showItemRight && <InputItemRight>@</InputItemRight>}
 					</InputGroup>
 				</div>

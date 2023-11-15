@@ -1,23 +1,25 @@
 import React from "react";
 import { cn } from "../main";
+import {
+	FlexDirection,
+	Gaps,
+	Items,
+	Justify,
+	twFlexDirection,
+	twGaps,
+	twItems,
+	twJustify,
+} from "../misc/tailwind-hack";
 
 type Props = ValliumCardProps & React.ComponentPropsWithoutRef<"div">;
 
 export type ValliumCardProps = {
 	flex?: boolean;
 	hover?: boolean;
-	direction?: "col" | "row";
-	justify?:
-		| "start"
-		| "center"
-		| "end"
-		| "between"
-		| "around"
-		| "evenly"
-		| "normal"
-		| "stretch";
-	items?: "start" | "center" | "end" | "baseline" | "stretch";
-	gap?: "2" | "4" | "8" | "16" | "32";
+	direction?: FlexDirection;
+	justify?: Justify;
+	items?: Items;
+	gap?: Gaps;
 };
 
 export function Card({
@@ -32,7 +34,7 @@ export function Card({
 	...props
 }: Props) {
 	const flexStyles = cn(
-		`flex flex-${direction} justify-${justify} items-${items} gap-${gap}`
+		`flex ${twFlexDirection[direction]} ${twJustify[justify]} ${twItems[items]} ${twGaps[gap]}`
 	);
 	return (
 		<div
