@@ -1,13 +1,7 @@
-import {
-	Children,
-	cloneElement,
-	useRef,
-	forwardRef,
-	useLayoutEffect,
-	useState,
-} from "react";
+import { Children, cloneElement, useRef, forwardRef, useState } from "react";
 import { cn } from "../main";
 import { hasChildWithDisplayName } from "../misc/utils";
+import { useIsomorphicLayoutEffect } from "usehooks-ts";
 
 type Props = ValliumInputProps & React.InputHTMLAttributes<HTMLInputElement>;
 
@@ -62,12 +56,12 @@ export function InputGroup({
 		.filter((child: any) => child.props["variant"])
 		.map((child: any) => child.props["variant"])[0];
 
-	useLayoutEffect(() => {
+	useIsomorphicLayoutEffect(() => {
 		if (!leftAddonRef.current) return;
 		setLeftAddonWidth(leftAddonRef.current.getBoundingClientRect().width);
 	}, [leftAddonRef]);
 
-	useLayoutEffect(() => {
+	useIsomorphicLayoutEffect(() => {
 		if (!rightAddonRef.current) return;
 		setRightAddonWidth(rightAddonRef.current.getBoundingClientRect().width);
 	}, [rightAddonRef]);

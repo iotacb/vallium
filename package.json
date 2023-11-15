@@ -1,7 +1,7 @@
 {
 	"name": "valliumui",
 	"private": false,
-	"version": "0.0.12",
+	"version": "0.0.14",
 	"type": "module",
 	"main": "dist/valliumui.js",
 	"types": "dist/main.d.ts",
@@ -9,6 +9,14 @@
 	"files": [
 		"dist"
 	],
+	"bugs": {
+		"url": "https://github.com/vallium-dev/valliumui-doc/issues",
+		"email": "info@vallium.dev"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/vallium-dev/valliumui.git"
+	},
 	"scripts": {
 		"dev": "vite",
 		"build": "tsc --p ./tsconfig-build.json && vite build",
@@ -20,7 +28,10 @@
 		"postcss": "^8.4.31",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
-		"tailwindcss": "^3.3.5"
+		"tailwindcss": "^3.3.5",
+		"usehooks-ts": "^2.9.1",
+		"clsx": "^2.0.0",
+		"tailwind-merge": "^2.0.0"
 	},
 	"devDependencies": {
 		"@types/node": "^20.9.0",
