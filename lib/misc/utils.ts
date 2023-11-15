@@ -12,3 +12,14 @@ export function hasChildWithId(children: React.ReactNode, id: string) {
 			.length > 0
 	);
 }
+
+export function hasChildWithDisplayName(
+	children: React.ReactNode,
+	displayName: string
+) {
+	return (
+		Children.toArray(children).filter(
+			(child: any) => child.type.displayName === displayName
+		).length > 0
+	);
+}

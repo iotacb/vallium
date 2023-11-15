@@ -9,20 +9,20 @@ export type ValliumBadgeProps = {
 
 export function Badge({
 	className,
-	variant = "outlined",
+	variant = "filled",
 	children,
 	...props
 }: Props) {
 	const variants = {
-		outlined: cn("border border-vallium-500"),
-		filled: cn("bg-vallium-500/40"),
-		combed: cn("border border-vallium-500 bg-vallium-500/40"),
+		outlined: cn("border-vallium-500"),
+		filled: cn("border-transparent bg-vallium-500/40"),
+		combed: cn("border-vallium-500 bg-vallium-500/40"),
 	};
 
 	return (
 		<span
 			{...props}
-			className={cn("px-1 rounded-sm", variants[variant], className)}
+			className={cn("px-1 rounded-sm border", variants[variant], className)}
 		>
 			{children}
 		</span>

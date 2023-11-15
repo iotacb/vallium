@@ -14,10 +14,10 @@ export default function Inputs({}: Props) {
 	const [showAddonRight, setShowAddonRight] = React.useState<boolean>(false);
 	const [showItemRight, setShowItemRight] = React.useState<boolean>(false);
 
-	useInterval(() => {
-		setShowAddonRight(!showAddonRight);
-		setShowItemRight(!showItemRight);
-	}, 2000);
+	// useInterval(() => {
+	// 	setShowAddonRight(!showAddonRight);
+	// 	setShowItemRight(!showItemRight);
+	// }, 2000);
 
 	return (
 		<main className="h-dvh bg-zinc-900 flex flex-col justify-center items-center gap-8">
@@ -25,11 +25,16 @@ export default function Inputs({}: Props) {
 				Typography
 			</Text>
 			<Card flex direction="col" gap="4">
-				<div className="flex items-center gap-4">
+				{/* <InputGroup>
+					<InputAddonLeft>Mert</InputAddonLeft>
+					<InputItemLeft>$</InputItemLeft>
+					<Input />
+				</InputGroup> */}
+				<div className="flex items-center gap-4 w-full">
 					<Input placeholder="Default Input" />
 					<Input variant="filled" placeholder="Default Input" />
 				</div>
-				<div className="flex items-center gap-4">
+				<div className="flex items-center gap-4 w-full">
 					<InputGroup>
 						<InputAddonLeft>
 							<Text>$</Text>
@@ -53,11 +58,25 @@ export default function Inputs({}: Props) {
 						)}
 					</InputGroup>
 				</div>
-				<div className="flex items-center gap-4">
+				<div className="flex items-center gap-4 w-full">
 					<InputGroup>
 						<InputItemLeft>$</InputItemLeft>
 						<Input placeholder="Input with Items" />
 						{showItemRight && <InputItemRight>@</InputItemRight>}
+					</InputGroup>
+					<InputGroup>
+						<InputItemLeft>$</InputItemLeft>
+						<Input variant="filled" placeholder="Input with Items" />
+						{showItemRight && <InputItemRight>@</InputItemRight>}
+					</InputGroup>
+				</div>
+				<div className="flex items-center gap-4 w-full">
+					<InputGroup>
+						<InputItemLeft>$</InputItemLeft>
+						<InputAddonLeft>Test</InputAddonLeft>
+						<Input placeholder="Input with Items" />
+						{<InputItemRight>@</InputItemRight>}
+						<InputAddonRight>Test</InputAddonRight>
 					</InputGroup>
 					<InputGroup>
 						<InputItemLeft>$</InputItemLeft>
