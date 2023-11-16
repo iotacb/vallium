@@ -6,7 +6,7 @@ import {
 	useState,
 	useEffect,
 } from "react";
-import { Button, cn } from "../main";
+import { cn } from "../main";
 import { hasChildWithDisplayName, wt } from "../misc/utils";
 
 type Props = ValliumInputProps & React.InputHTMLAttributes<HTMLInputElement>;
@@ -174,7 +174,7 @@ export const InputAddon = forwardRef<HTMLDivElement, ValliumInputAddonProps>(
 			className,
 			button = false,
 			disabled = false,
-			onClick = (event: React.MouseEvent<HTMLDivElement>) => {},
+			onClick = (_event: React.MouseEvent<HTMLDivElement>) => {},
 			...props
 		},
 		ref
