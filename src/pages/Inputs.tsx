@@ -24,7 +24,7 @@ export default function Inputs({}: Props) {
 			<Text type="h1" weight="bold" underline>
 				Typography
 			</Text>
-			<Card flex direction="col" gap="4">
+			<Card gap="2">
 				{/* <InputGroup>
 					<InputAddonLeft>Mert</InputAddonLeft>
 					<InputItemLeft>$</InputItemLeft>
@@ -76,7 +76,9 @@ export default function Inputs({}: Props) {
 						<InputAddonLeft>Test</InputAddonLeft>
 						<Input placeholder="Input with Items" />
 						{<InputItemRight>@</InputItemRight>}
-						<InputAddonRight>Test</InputAddonRight>
+						<InputAddonRight disabled button onClick={() => alert("Click")}>
+							Test
+						</InputAddonRight>
 					</InputGroup>
 					<InputGroup>
 						<InputItemLeft>$</InputItemLeft>

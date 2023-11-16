@@ -20,7 +20,7 @@ export function Divider({
 			direction === "horizontal" ? "w-full h-[1px]" : "h-full w-[1px]"
 		),
 		gradient: cn(
-			`from-transparent via-neutral-700 to-transparent`,
+			"from-transparent via-neutral-700 to-transparent",
 			direction === "horizontal"
 				? "w-full h-[1px] bg-gradient-to-r"
 				: "h-full w-[1px] bg-gradient-to-b"

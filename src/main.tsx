@@ -2,9 +2,18 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { Navbar, ValliumNavbarItemProps } from "../lib/components/Navbar.tsx";
-import { Button } from "../lib/main.ts";
+import {
+	Button,
+	Divider,
+	Input,
+	InputAddonLeft,
+	InputGroup,
+	cn,
+} from "../lib/main.ts";
 import Dividers from "./pages/Dividers.tsx";
 import Inputs from "./pages/Inputs.tsx";
+import { wt } from "../lib/misc/utils.ts";
+import { Stack } from "../lib/components/Stack.tsx";
 
 const leftNavbarContent: ValliumNavbarItemProps[] = [
 	{
@@ -29,11 +38,20 @@ const rightNavbarContent: ValliumNavbarItemProps[] = [
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
 	<React.StrictMode>
-		<Navbar
+		{/* <Navbar
 			fixed
 			contentLeft={leftNavbarContent}
 			contentRight={rightNavbarContent}
-		/>
+		/> */}
+		{/* <div className="text-white w-screen h-screen grid place-content-center">
+			<Stack gap="2" divider={<Divider direction="horizontal" />}>
+				<p>Item 1</p>
+				<p>Item 2</p>
+				<p>Item 3</p>
+				<p>Item 4</p>
+				<p>Item 5</p>
+			</Stack>
+		</div> */}
 		<Inputs />
 		{/* <div className="w-screen h-screen grid place-content-center">
 			<svg width="0" height="0">

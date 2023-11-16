@@ -6,8 +6,8 @@ import {
 	useState,
 	useEffect,
 } from "react";
-import { cn } from "../main";
-import { hasChildWithDisplayName } from "../misc/utils";
+import { Button, cn } from "../main";
+import { hasChildWithDisplayName, wt } from "../misc/utils";
 
 type Props = ValliumInputProps & React.InputHTMLAttributes<HTMLInputElement>;
 
@@ -27,7 +27,10 @@ export type ValliumInputProps = {
 
 export type ValliumInputGroupProps = {} & React.ComponentPropsWithoutRef<"div">;
 
-export type ValliumInputAddonProps = {} & React.ComponentPropsWithoutRef<"div">;
+export type ValliumInputAddonProps = {
+	button?: boolean;
+	disabled?: boolean;
+} & React.ComponentPropsWithoutRef<"div">;
 
 export type ValliumInputItemProps = {} & React.ComponentPropsWithoutRef<"div">;
 
@@ -84,8 +87,8 @@ export function InputGroup({
 				...child.props,
 				ref: containsItemLeft ? leftAddonRef : null,
 				className: `
-				${child.props.className ? child.props.className : ""}
-				${variantOfInput !== "filled" ? "border-r-0" : ""}
+				${wt(child.props.className)}
+				${wt(variantOfInput !== "filled" && "border-r-0")}
 				`,
 			});
 		} else if (child.type.displayName === validInputGroupChilds.addonRight) {
@@ -93,8 +96,8 @@ export function InputGroup({
 				...child.props,
 				ref: containsAddonRight ? rightAddonRef : null,
 				className: `
-				${child.props.className ? child.props.className : ""}
-				${variantOfInput !== "filled" ? "border-l-0" : ""}
+				${wt(child.props.className)}
+				${wt(variantOfInput !== "filled" && "border-l-0")}
 				`,
 			});
 		} else if (child.type.displayName === validInputGroupChilds.itemLeft) {
@@ -105,8 +108,8 @@ export function InputGroup({
 				},
 				className: `
 				
-				${child.props.className ? child.props.className : ""}
-				${containsAddonLeft ? "" : "left-0"}
+				${wt(child.props.className)}
+				${wt(!containsAddonLeft && "left-0")}
 				${
 					containsAddonLeft && containsItemLeft && leftAddonWidth === 0
 						? "opacity-0"
@@ -122,8 +125,8 @@ export function InputGroup({
 					right: rightAddonWidth + "px",
 				},
 				className: `
-				${child.props.className ? child.props.className : ""}
-				${containsAddonRight ? "" : "right-0"}
+				${wt(child.props.className)}
+				${wt(!containsAddonRight && "right-0")}
 				${
 					containsAddonRight && containsItemRight && rightAddonWidth === 0
 						? "opacity-0"
@@ -136,11 +139,11 @@ export function InputGroup({
 			return cloneElement(child, {
 				...child.props,
 				className: `
-				${child.props.className ? child.props.className : ""}
-				${containsAddonLeft ? "rounded-l-none" : ""}
-				${containsAddonRight ? "rounded-r-none" : ""}
-				${containsItemLeft ? "pl-10" : ""}
-				${containsItemRight ? "pr-10" : ""}
+				${wt(child.props.className)}
+				${wt(containsAddonLeft && "rounded-l-none")}
+				${wt(containsAddonRight && "rounded-r-none")}
+				${wt(containsItemLeft && "pl-10")}
+				${wt(containsItemRight && "pr-10")}
 				`,
 			});
 		} else {
@@ -165,13 +168,32 @@ export function InputGroup({
 }
 
 export const InputAddon = forwardRef<HTMLDivElement, ValliumInputAddonProps>(
-	({ children, className, ...props }, ref) => {
+	(
+		{
+			children,
+			className,
+			button = false,
+			disabled = false,
+			onClick = (event: React.MouseEvent<HTMLDivElement>) => {},
+			...props
+		},
+		ref
+	) => {
 		return (
 			<div
 				{...props}
 				ref={ref}
+				role={button ? "button" : "none"}
+				onClick={(event) => {
+					if (disabled) return;
+					onClick(event);
+				}}
 				className={cn(
-					"bg-neutral-800 grid place-content-center px-3 border border-neutral-700 valliumInputAddon",
+					"bg-neutral-800 duration-150 grid place-content-center px-3 border border-neutral-700 valliumInputAddon",
+					button &&
+						(disabled
+							? "cursor-not-allowed bg-neutral-600 text-neutral-400 select-none"
+							: "hover:bg-neutral-700 active:bg-neutral-800 cursor-pointer select-none"),
 					className
 				)}
 			>
@@ -259,7 +281,7 @@ export const Input = forwardRef<HTMLInputElement, Props>(
 				className={cn(
 					"w-full rounded-md px-2 transition-colors duration-150 text-white h-10 outline-none border focus:border-vallium-500",
 					variants[variant],
-					type === "file" ? "pt-1" : "",
+					type === "file" && "pt-1",
 					className
 				)}
 				{...props}

@@ -61,7 +61,7 @@ export function Button({
 	return types[as]({
 		...props,
 		className: cn(
-			"bg-white rounded-md duration-150 flex items-center gap-2",
+			"bg-white rounded-md duration-150 flex items-center gap-2 disabled:cursor-not-allowed",
 			scales[scale],
 			variants[variant],
 			className
