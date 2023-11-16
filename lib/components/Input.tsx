@@ -1,7 +1,13 @@
-import { Children, cloneElement, useRef, forwardRef, useState } from "react";
+import {
+	Children,
+	cloneElement,
+	useRef,
+	forwardRef,
+	useState,
+	useEffect,
+} from "react";
 import { cn } from "../main";
 import { hasChildWithDisplayName } from "../misc/utils";
-import { useIsomorphicLayoutEffect } from "usehooks-ts";
 
 type Props = ValliumInputProps & React.InputHTMLAttributes<HTMLInputElement>;
 
@@ -56,12 +62,12 @@ export function InputGroup({
 		.filter((child: any) => child.props["variant"])
 		.map((child: any) => child.props["variant"])[0];
 
-	useIsomorphicLayoutEffect(() => {
+	useEffect(() => {
 		if (!leftAddonRef.current) return;
 		setLeftAddonWidth(leftAddonRef.current.getBoundingClientRect().width);
 	}, [leftAddonRef]);
 
-	useIsomorphicLayoutEffect(() => {
+	useEffect(() => {
 		if (!rightAddonRef.current) return;
 		setRightAddonWidth(rightAddonRef.current.getBoundingClientRect().width);
 	}, [rightAddonRef]);
@@ -76,7 +82,7 @@ export function InputGroup({
 		} else if (child.type.displayName === validInputGroupChilds.addonLeft) {
 			return cloneElement(child, {
 				...child.props,
-				ref: leftAddonRef,
+				ref: containsItemLeft ? leftAddonRef : null,
 				className: `
 				${child.props.className ? child.props.className : ""}
 				${variantOfInput !== "filled" ? "border-r-0" : ""}
@@ -85,7 +91,7 @@ export function InputGroup({
 		} else if (child.type.displayName === validInputGroupChilds.addonRight) {
 			return cloneElement(child, {
 				...child.props,
-				ref: rightAddonRef,
+				ref: containsAddonRight ? rightAddonRef : null,
 				className: `
 				${child.props.className ? child.props.className : ""}
 				${variantOfInput !== "filled" ? "border-l-0" : ""}
@@ -98,8 +104,15 @@ export function InputGroup({
 					left: leftAddonWidth + "px",
 				},
 				className: `
+				
 				${child.props.className ? child.props.className : ""}
 				${containsAddonLeft ? "" : "left-0"}
+				${
+					containsAddonLeft && containsItemLeft && leftAddonWidth === 0
+						? "opacity-0"
+						: "opacity-100"
+				}
+				duration-150 transition-opacity
 				`,
 			});
 		} else if (child.type.displayName === validInputGroupChilds.itemRight) {
@@ -111,6 +124,12 @@ export function InputGroup({
 				className: `
 				${child.props.className ? child.props.className : ""}
 				${containsAddonRight ? "" : "right-0"}
+				${
+					containsAddonRight && containsItemRight && rightAddonWidth === 0
+						? "opacity-0"
+						: "opacity-100"
+				}
+				duration-150 transition-opacity
 				`,
 			});
 		} else if (child.type.displayName === validInputGroupChilds.input) {
