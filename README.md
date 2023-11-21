@@ -4,6 +4,9 @@ Build with the vallium design system.
 
 # Be aware that this library is still experimental and in development!
 
+# Documentation
+For better documentation and examples, please see the docs [here](https://ui.vallium.dev/)
+
 # Installation
 
 ## Style compilation

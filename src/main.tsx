@@ -14,6 +14,10 @@ import Dividers from "./pages/Dividers.tsx";
 import Inputs from "./pages/Inputs.tsx";
 import { wt } from "../lib/misc/utils.ts";
 import { Stack } from "../lib/components/Stack.tsx";
+import Cards from "./pages/Cards.tsx";
+import Skeletons from "./pages/Skeletons.tsx";
+import Buttons from "./pages/Buttons.tsx";
+import Pins from "./pages/Pins.tsx";
 
 const leftNavbarContent: ValliumNavbarItemProps[] = [
 	{
@@ -52,7 +56,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
 				<p>Item 5</p>
 			</Stack>
 		</div> */}
-		<Inputs />
+		<Pins />
 		{/* <div className="w-screen h-screen grid place-content-center">
 			<svg width="0" height="0">
 				<defs>

@@ -40,7 +40,7 @@ export default function Texts({}: Props) {
 			<Text type="h1" weight="bold" underline>
 				Typography
 			</Text>
-			<Card flex direction="col" justify="center" items="center" gap="4">
+			<Card justify="center" items="center" gap="4">
 				{texts.map((text, index) => (
 					<div key={index} className="flex items-center gap-4">
 						<Text type={text.type}>{text.text}</Text>

@@ -9,17 +9,11 @@ export default function Dividers({}: Props) {
 			<Text type="h1" weight="bold" underline>
 				Typography
 			</Text>
-			<Card flex justify="center" items="center" className="w-80 h-20">
+			<Card justify="center" items="center" className="w-80 h-20">
 				<Divider />
 				<Divider variant="gradient" />
 			</Card>
-			<Card
-				flex
-				direction="row"
-				justify="evenly"
-				items="center"
-				className="w-80 h-80"
-			>
+			<Card row justify="evenly" items="center" className="w-80 h-80">
 				<Divider direction="vertical" />
 				<Divider direction="vertical" variant="gradient" />
 			</Card>
