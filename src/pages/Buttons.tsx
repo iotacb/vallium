@@ -8,7 +8,7 @@ export default function Buttons({}: Props) {
 			<Text type="h1" weight="bold" underline>
 				Typography
 			</Text>
-			<Card hover flex direction="col" gap="4">
+			{/* <Card row gap="4">
 				<div className="flex items-center gap-4">
 					<Button variant="white">Klick mich</Button>
 					<Button variant="white" disabled>
@@ -27,7 +27,14 @@ export default function Buttons({}: Props) {
 						Klick mich
 					</Button>
 				</div>
-			</Card>
+			</Card> */}
+
+			{/* <Card row items="center" gap="4"> */}
+			<Button scale="thin">Thin</Button>
+			<Button scale="small">Small</Button>
+			<Button scale="normal">Normal</Button>
+			<Button scale="big">Big halloffffffffodddddddddddddddddddddo</Button>
+			{/* </Card> */}
 		</main>
 	);
 }

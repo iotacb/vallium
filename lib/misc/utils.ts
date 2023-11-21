@@ -10,13 +10,6 @@ export function wt(value: string | boolean | undefined | null | unknown) {
 	return value ? value : "";
 }
 
-export function hasChildWithId(children: React.ReactNode, id: string) {
-	return (
-		Children.toArray(children).filter((child: any) => child.type.id === id)
-			.length > 0
-	);
-}
-
 export function hasChildWithDisplayName(
 	children: React.ReactNode,
 	displayName: string

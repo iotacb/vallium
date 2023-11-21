@@ -16,6 +16,7 @@ import { wt } from "../lib/misc/utils.ts";
 import { Stack } from "../lib/components/Stack.tsx";
 import TabsPage from "./pages/TabsPage.tsx";
 
+
 const leftNavbarContent: ValliumNavbarItemProps[] = [
 	{
 		content: "Home",

@@ -14,10 +14,10 @@ export default function Inputs({}: Props) {
 	const [showAddonRight, setShowAddonRight] = React.useState<boolean>(false);
 	const [showItemRight, setShowItemRight] = React.useState<boolean>(false);
 
-	// useInterval(() => {
-	// 	setShowAddonRight(!showAddonRight);
-	// 	setShowItemRight(!showItemRight);
-	// }, 2000);
+	useInterval(() => {
+		setShowAddonRight(!showAddonRight);
+		setShowItemRight(!showItemRight);
+	}, 2000);
 
 	return (
 		<main className="h-dvh bg-zinc-900 flex flex-col justify-center items-center gap-8">

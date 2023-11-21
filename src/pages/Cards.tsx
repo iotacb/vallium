@@ -1,11 +1,8 @@
 import React from "react";
 import { Card, Text } from "../../lib/main";
-import { motion } from "framer-motion";
 import { useInterval } from "usehooks-ts";
 
 type Props = {};
-
-const MotionCard = motion(Card);
 
 export default function Cards({}: Props) {
 	const [isCol, setIsCol] = React.useState<boolean>(false);
@@ -19,16 +16,32 @@ export default function Cards({}: Props) {
 				Typography
 			</Text>
 			<Card>
-				<Text>I am a card.</Text>
+				<Text>Normal card</Text>
 			</Card>
-			<MotionCard layout layoutRoot flex direction={isCol ? "col" : "row"}>
-				<motion.div layout>
-					<Text>I am a card.</Text>
-				</motion.div>
-				<motion.div layout>
-					<Text>I am a card.</Text>
-				</motion.div>
-			</MotionCard>
+			<Card row>
+				<Card scheme="normal">Normal</Card>
+				<Card scheme="info">Normal</Card>
+				<Card scheme="success">Normal</Card>
+				<Card scheme="warning">Normal</Card>
+				<Card scheme="error">Normal</Card>
+			</Card>
+			<Card row>
+				<Card accent="left" scheme="normal">
+					Normal
+				</Card>
+				<Card accent="left" scheme="info">
+					Normal
+				</Card>
+				<Card accent="top" scheme="success">
+					Normal
+				</Card>
+				<Card accent="right" scheme="warning">
+					Normal
+				</Card>
+				<Card accent="bottom" scheme="error">
+					Normal
+				</Card>
+			</Card>
 		</main>
 	);
 }

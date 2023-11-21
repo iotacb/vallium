@@ -22,8 +22,7 @@ export function Stack({
 	...props
 }: Props) {
 	const clones = Children.map(children, (child: any, index: number) => {
-		if (!divider || Children.count(children) === index + 1)
-			return cloneElement(child, { ...props });
+		if (!divider || Children.count(children) === index + 1) return child;
 		return (
 			<Fragment>
 				{child}
