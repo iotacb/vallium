@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+import { colors, shadows } from "./lib/misc/theme";
 export default {
 	content: [
 		"./index.html",
@@ -7,26 +8,15 @@ export default {
 	],
 	theme: {
 		extend: {
-			height: {
-				dvh: "100dvh",
-			},
-			width: {
-				dvw: "100dvw",
-			},
 			colors: {
 				vallium: {
-					50: "#eef9ff",
-					100: "#d9f2ff",
-					200: "#bbe9ff",
-					300: "#8cdcff",
-					400: "#56c6ff",
-					500: "#2eaaff",
-					600: "#188cf8",
-					700: "#1178ee",
-					800: "#145db9",
-					900: "#174f91",
-					950: "#133158",
+					...colors,
 				},
+			},
+			boxShadow: {
+				// vallium: {
+				...shadows,
+				// },
 			},
 		},
 	},

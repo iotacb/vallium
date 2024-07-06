@@ -81,6 +81,6 @@ export const PinInputItem = forwardRef<HTMLInputElement, ValliumPinInputProps>(
 );
 PinInputItem.displayName = "ValliumPinInputItem";
 
-function validate(value: string) {
-	return /^[0-9]+$/.test(value);
-}
+// function validate(value: string) {
+// 	return /^[0-9]+$/.test(value);
+// }

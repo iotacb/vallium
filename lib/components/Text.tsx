@@ -5,11 +5,17 @@ type Props = ValliumTextProps &
 	React.HTMLAttributes<HTMLHeadingElement> &
 	React.ComponentPropsWithoutRef<"p">;
 export type ValliumTextType = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p";
+export type ValliumTextWeight =
+	| "bold"
+	| "normal"
+	| "light"
+	| "medium"
+	| "semibold";
 export type ValliumTextProps = {
 	type?: ValliumTextType;
 	color?: string;
 	underline?: boolean;
-	weight?: "bold" | "normal" | "light" | "medium" | "semibold";
+	weight?: ValliumTextWeight;
 };
 
 export function Text({
